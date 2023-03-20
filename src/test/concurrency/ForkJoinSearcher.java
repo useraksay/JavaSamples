@@ -9,7 +9,7 @@ public class ForkJoinSearcher extends RecursiveTask<Boolean> {
 
     ForkJoinSearcher(int[] arr, int search) {
         this.arr = arr;
-        this.searchableElement=search;
+        this.searchableElement = search;
     }
 
     /**
