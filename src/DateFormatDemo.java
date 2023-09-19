@@ -1,3 +1,4 @@
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -8,11 +9,13 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
 
-public class DateFormat {
+public class DateFormatDemo {
     public static void main(String [] args) throws ParseException {
         String dateString = "2015-07-16 17:07:21";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -65,6 +68,24 @@ public class DateFormat {
         int endMon = 2;
         int diff = (monSize - ((startMon - endMon) % monSize)) % monSize;
         System.out.println(diff);
+
+        Month startMonth = Month.JANUARY;
+        System.out.println(startMonth.getDisplayName(TextStyle.SHORT, Locale.ENGLISH));
+
+        LocalDateTime ldt = LocalDateTime.now();
+        String formattedDateStr = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).format(ldt);
+        System.out.println("Formatted Date in String format: " + formattedDateStr);
+
+        Locale locale = Locale.GERMANY;
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, locale);
+        String dateStr = dateFormat.format(new Date());
+        System.out.println(dateStr);
+
+        DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).withLocale(Locale.US);
+        String usFormattedDate = LocalDate.now().format(dateTimeFormatter1);  // 3
+        System.out.println("Current date in en-US date format: " + usFormattedDate);
+
+        System.out.println(DateTimeFormatter.ofPattern("MM/dd").withLocale(Locale.ITALIAN).format(LocalDate.now()));
     }
 
     private static ZonedDateTime convertToZonedTime(Long timeStamp) {
