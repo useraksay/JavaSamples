@@ -5,10 +5,12 @@ import java.util.UUID;
 
 class Task extends TimerTask {
     private Map<Long, UUID> map;
+
     public Task(Map<Long, UUID> map){
         this.map = map;
     }
-    public void run(){
+
+    public void run() {
         System.out.println("Run the timer :-");
         this.map.entrySet().stream().forEach(entry -> {
             Long key = entry.getKey();

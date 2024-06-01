@@ -1,0 +1,221 @@
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+public class LatinCharacterCheck {
+    private static final Set<Character> whiteSet = buildWhiteSet();
+
+    private static Set<Character> buildWhiteSet() {
+        Set<Character> map = new HashSet<>();
+        map.add('¡');
+        map.add('Œ');
+        map.add('œ');
+        map.add('Š');
+        map.add('š');
+        map.add('Ÿ');
+        map.add('Ž');
+        map.add('ž');
+        map.add('ƒ');
+        map.add('ˆ');
+        map.add('˜');
+        map.add('–');
+        map.add('—');
+        map.add('‘');
+        map.add('’');
+        map.add('‚');
+        map.add('“');
+        map.add('”');
+        map.add('„');
+        map.add('†');
+        map.add('‡');
+        map.add('•');
+        map.add('…');
+        map.add('‰');
+        map.add('‹');
+        map.add('›');
+        map.add('€');
+        map.add('™');
+        map.add('İ');
+        map.add('č');
+        map.add('ř');
+        map.add('ď');
+        map.add('ŕ');
+        map.add('ě');
+        map.add('ů');
+        map.add('ľ');
+        map.add('ĺ');
+        map.add('ť');
+        map.add('ň');
+        map.add('Ā');
+        map.add('ā');
+        map.add('Ă');
+        map.add('ă');
+        map.add('Ą');
+        map.add('ą');
+        map.add('Ć');
+        map.add('ć');
+        map.add('Ĉ');
+        map.add('ĉ');
+        map.add('Ċ');
+        map.add('ċ');
+        map.add('Č');
+        map.add('Ď');
+        map.add('Đ');
+        map.add('đ');
+        map.add('Ē');
+        map.add('ē');
+        map.add('Ĕ');
+        map.add('ĕ');
+        map.add('Ė');
+        map.add('ė');
+        map.add('Ę');
+        map.add('ę');
+        map.add('Ě');
+        map.add('Ĝ');
+        map.add('ĝ');
+        map.add('Ğ');
+        map.add('ğ');
+        map.add('Ġ');
+        map.add('ġ');
+        map.add('Ģ');
+        map.add('ģ');
+        map.add('Ĥ');
+        map.add('ĥ');
+        map.add('Ħ');
+        map.add('ħ');
+        map.add('Ĩ');
+        map.add('ĩ');
+        map.add('Ī');
+        map.add('ī');
+        map.add('Ĭ');
+        map.add('ĭ');
+        map.add('Į');
+        map.add('į');
+        map.add('ı');
+        map.add('Ĵ');
+        map.add('ĵ');
+        map.add('Ķ');
+        map.add('ķ');
+        map.add('Ĺ');
+        map.add('Ļ');
+        map.add('ļ');
+        map.add('Ľ');
+        map.add('Ł');
+        map.add('ł');
+        map.add('Ń');
+        map.add('ń');
+        map.add('Ņ');
+        map.add('ņ');
+        map.add('Ň');
+        map.add('Ō');
+        map.add('ō');
+        map.add('Ŏ');
+        map.add('ŏ');
+        map.add('Ő');
+        map.add('ő');
+        map.add('Ŕ');
+        map.add('Ŗ');
+        map.add('ŗ');
+        map.add('Ř');
+        map.add('Ś');
+        map.add('ś');
+        map.add('Ŝ');
+        map.add('ŝ');
+        map.add('Ş');
+        map.add('ş');
+        map.add('Ţ');
+        map.add('ţ');
+        map.add('Ť');
+        map.add('Ŧ');
+        map.add('ŧ');
+        map.add('Ũ');
+        map.add('ũ');
+        map.add('Ū');
+        map.add('ū');
+        map.add('Ŭ');
+        map.add('ŭ');
+        map.add('Ů');
+        map.add('Ű');
+        map.add('ű');
+        map.add('Ų');
+        map.add('ų');
+        map.add('Ŵ');
+        map.add('ŵ');
+        map.add('Ŷ');
+        map.add('ŷ');
+        map.add('Ź');
+        map.add('ź');
+        map.add('Ż');
+        map.add('ż');
+        map.add('ƀ');
+        map.add('Ɖ');
+        map.add('Ƒ');
+        map.add('Ɨ');
+        map.add('ƚ');
+        map.add('Ɵ');
+        map.add('Ơ');
+        map.add('ơ');
+        map.add('ƫ');
+        map.add('Ʈ');
+        map.add('Ư');
+        map.add('ư');
+        map.add('ƶ');
+        map.add('Ǎ');
+        map.add('ǎ');
+        map.add('Ǐ');
+        map.add('ǐ');
+        map.add('Ǒ');
+        map.add('ǒ');
+        map.add('Ǔ');
+        map.add('ǔ');
+        map.add('Ǖ');
+        map.add('ǖ');
+        map.add('Ǘ');
+        map.add('ǘ');
+        map.add('Ǚ');
+        map.add('ǚ');
+        map.add('Ǜ');
+        map.add('ǜ');
+        map.add('Ǟ');
+        map.add('ǟ');
+        map.add('Ǥ');
+        map.add('ǥ');
+        map.add('Ǧ');
+        map.add('ǧ');
+        map.add('Ǩ');
+        map.add('ǩ');
+        map.add('Ǫ');
+        map.add('ǫ');
+        map.add('Ǭ');
+        map.add('ǭ');
+        map.add('ǰ');
+        map.add('ɡ');
+
+        return Collections.unmodifiableSet(map);
+    }
+
+    public static boolean hasNonLatinCharacter(String s) {
+        if(s != null) {
+            char[] array = s.toCharArray();
+            for( char c : array) {
+                if(c > 0x00FF && !whiteSet.contains(c)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hasNonLatinCharacter("旧金山"));
+        System.out.println(hasNonLatinCharacter("123 旧金山"));
+        System.out.println(hasNonLatinCharacter("123 旧金山, 123 "));
+        System.out.println(hasNonLatinCharacter("123 旧金山, 123旧金山 "));
+        System.out.println(hasNonLatinCharacter("adcd"));
+        System.out.println(hasNonLatinCharacter("123 main street"));
+        System.out.println(hasNonLatinCharacter("main street"));
+        System.out.println(hasNonLatinCharacter("123"));
+
+    }
+}

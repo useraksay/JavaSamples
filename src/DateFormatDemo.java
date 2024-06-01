@@ -14,6 +14,7 @@ import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class DateFormatDemo {
     public static void main(String [] args) throws ParseException {
@@ -86,6 +87,31 @@ public class DateFormatDemo {
         System.out.println("Current date in en-US date format: " + usFormattedDate);
 
         System.out.println(DateTimeFormatter.ofPattern("MM/dd").withLocale(Locale.ITALIAN).format(LocalDate.now()));
+
+        String start = "2023-10-13T01:25:44.000";
+        LocalDateTime localDateTime = LocalDateTime.parse(start, DateTimeFormatter.ISO_DATE_TIME);
+        System.out.println(localDateTime);
+
+        long test_timestamp = 1704289500000l;
+                            //1704289377415
+        System.out.println(System.currentTimeMillis());
+        LocalDateTime triggerTime =
+            LocalDateTime.ofInstant(Instant.ofEpochMilli(test_timestamp),
+                TimeZone.getDefault().toZoneId());
+        DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ISO_DATE_TIME;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX");
+
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sdf1.parse("2023-10-13 01:25:44").getTime());
+        System.out.println(convertToZonedTime(1704289500000l).toLocalDateTime());
+
+        System.out.println(LocalDateTime.now().toLocalTime().toNanoOfDay());
+
+        String myDate = "2024-02-08 18:49:46";
+        LocalDateTime localDateTime1 = LocalDateTime.parse(myDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss") );
+        long millis = localDateTime1.atZone(ZoneId.of("America/Los_Angeles")).toInstant().toEpochMilli();
+        System.out.println("time in pst: " + millis);
+        System.out.println(System.currentTimeMillis());
     }
 
     private static ZonedDateTime convertToZonedTime(Long timeStamp) {
