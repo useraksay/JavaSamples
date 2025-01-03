@@ -26,9 +26,9 @@ public class MainClass {
         boolean flag = false;
         while(!flag){
            long now = new Date().getTime();
-           UUID uuid = UUID.randomUUID();
+           UUID Uuuid = UUID.randomUUID();
            System.out.println(now);
-           aClass.getMap().put(now, uuid);
+           aClass.getMap().put(now, Uuuid);
            try {
                Thread.sleep(1000);
            }catch (InterruptedException e) {

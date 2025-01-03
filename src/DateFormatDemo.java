@@ -12,7 +12,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
+import java.time.zone.ZoneRulesException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -112,6 +115,18 @@ public class DateFormatDemo {
         long millis = localDateTime1.atZone(ZoneId.of("America/Los_Angeles")).toInstant().toEpochMilli();
         System.out.println("time in pst: " + millis);
         System.out.println(System.currentTimeMillis());
+
+        ZoneId pst1 = TimeZone.getTimeZone(ZoneId.of("America/Argentina/Buenos_Aires", ZoneId.SHORT_IDS)).toZoneId();
+        ZoneId pst3 = TimeZone.getTimeZone(ZoneId.of("America/Argentina/Buenos_Aires", ZoneId.SHORT_IDS)).toZoneId();
+
+        TimeZone tz;
+        try {
+            tz = TimeZone.getTimeZone(ZoneId.of("IST", ZoneId.SHORT_IDS));
+        } catch (ZoneRulesException e) {
+            tz = TimeZone.getTimeZone(ZoneId.of("Asia/Kolkata"));
+            System.out.println(String.format("%s\n%s", e.getLocalizedMessage(), e));
+        }
+        parseSequence();
     }
 
     private static ZonedDateTime convertToZonedTime(Long timeStamp) {
@@ -119,5 +134,120 @@ public class DateFormatDemo {
         System.out.println(instant.atZone(ZoneId.systemDefault()).toLocalDate());
         instant.atZone(ZoneId.systemDefault()).toLocalDate();
         return instant.atZone(ZoneId.systemDefault()).truncatedTo(ChronoUnit.DAYS);
+    }
+
+    private List<String> ANTimeZones() {
+        String s = "CTT\n" +
+          "GMT\n" +
+          "AET\n" +
+          "America/New_York\n" +
+          "MET\n" +
+          "Japan\n" +
+          "Etc/GMT+8\n" +
+          "Brazil/East\n" +
+          "Europe/Paris\n" +
+          "Canada/Eastern\n" +
+          "Europe/Prague\n" +
+          "CST\n" +
+          "Europe/Warsaw\n" +
+          "Pacific/Wake\n" +
+          "ECT\n" +
+          "Europe/Sofia\n" +
+          "EAT\n" +
+          "Asia/Istanbul\n" +
+          "Pacific/Honolulu\n" +
+          "America/Sao_Paulo\n" +
+          "Europe/Amsterdam\n" +
+          "America/Denver\n" +
+          "Zulu\n" +
+          "Africa/Algiers\n" +
+          "America/Belize\n" +
+          "Etc/GMT+12\n" +
+          "IET\n" +
+          "Europe/Oslo\n" +
+          "Asia/Kolkata\n" +
+          "America/Mexico_City\n" +
+          "Australia/Perth\n" +
+          "Africa/Johannesburg\n" +
+          "Europe/Copenhagen\n" +
+          "Etc/GMT+9\n" +
+          "Pacific/Wallis\n" +
+          "US/Pacific\n" +
+          "Africa/Cairo\n" +
+          "Europe/Rome\n" +
+          "Etc/GMT+0\n" +
+          "Australia/Sydney\n" +
+          "JST\n" +
+          "Pacific/Yap\n" +
+          "Africa/Abidjan\n" +
+          "Mexico/General\n" +
+          "Atlantic/Reykjavik\n" +
+          "Mideast/Riyadh87\n" +
+          "US/Hawaii\n" +
+          "Etc/GMT+2\n" +
+          "Poland\n" +
+          "America/Adak\n" +
+          "Asia/Calcutta\n" +
+          "Europe/Berlin\n" +
+          "Chile/Continental\n" +
+          "Australia/Brisbane\n" +
+          "US/Central\n" +
+          "IST\n" +
+          "Europe/London\n" +
+          "Asia/Singapore\n" +
+          "Europe/Moscow\n" +
+          "America/Argentina/Buenos_Aires\n" +
+          "\n" +
+          "America/Los_Angeles\n" +
+          "US/Indiana-Starke\n" +
+          "SystemV/EST5\n" +
+          "Asia/Dubai\n" +
+          "UCT\n" +
+          "Europe/Athens\n" +
+          "America/Indiana/Indianapolis\n" +
+          "WET\n" +
+          "Europe/Dublin\n" +
+          "America/Lima\n" +
+          "Asia/Taibei\n" +
+          "Asia/Shanghai\n" +
+          "Aisa/Shangehai\n" +
+          "Singapore\n" +
+          "Australia/South\n" +
+          "Atlantic/South_Georgia\n" +
+          "Pacific/Apia\n" +
+          "Europe/Bucharest\n" +
+          "Etc/GMT-8\n" +
+          "US/Pacific-New\n" +
+          "Israel\n" +
+          "America/Chicago\n" +
+          "Europe/Stockholm\n" +
+          "Asia/Seoul\n" +
+          "US/Eastern\n" +
+          "Asia/Hong_Kong\n" +
+          "EST\n" +
+          "Pacific/Kanton\n" +
+          "Canada/East-Saskatchewan\n" +
+          "Europe/Belgrade\n" +
+          "America/Bogota\n" +
+          "Asia/Tokyo\n" +
+          "Turkey\n" +
+          "Europe/Madrid\n" +
+          "Hongkong\n" +
+          "Mexico/BajaNorte\n" +
+          "Europe/Helsinki\n" +
+          "Asia/Chungking\n" +
+          "UTC\n" +
+          "CET\n" +
+          "Africa/Accra\n" +
+          "ACT\n" +
+          "PST\n" +
+          "Europe/Budapest";
+
+        return new ArrayList<>();
+    }
+
+    public static void parseSequence() {
+        String s = "1899-12-31 16:00:00.0";
+        Instant.parse(s);
     }
 }

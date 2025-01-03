@@ -1,5 +1,5 @@
-import java.sql.SQLOutput;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
@@ -76,6 +76,9 @@ public class StringUtils {
     }
 
     System.out.println(Locale.US.toString());
+
+    String str = Base64.getEncoder().encodeToString(("https://www.sap.com/ad/editProfile?targetPropertyName=transact&profiletab=Settlement").getBytes());
+    System.out.println(str);
   }
 
   private static String usingStreams() {

@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 public class CompletableFutureDemo {
   private static final int NO_OF_THREADS = 2;
   public static void main(String[] args) throws ExecutionException, InterruptedException {
-//    synchronousCall();
+    synchronousCall();
 //    asynchronousCallGetApproach();
 //    asynchronousCallJoinApproach();
 //    asynchronousCallAllOfApproach();
