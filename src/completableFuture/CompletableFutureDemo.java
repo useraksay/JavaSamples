@@ -4,8 +4,12 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import utils.CustomPrintStream;
 
 public class CompletableFutureDemo {
+  static {
+    System.setOut(new CustomPrintStream(System.out));
+  }
   private static final int NO_OF_THREADS = 2;
   public static void main(String[] args) throws ExecutionException, InterruptedException {
     synchronousCall();
@@ -99,8 +103,8 @@ public class CompletableFutureDemo {
   private static ResponseObj synchronousCall() {
     ApiProxy apiProxy = new ApiProxy();
     long startTime = System.currentTimeMillis();
-    String s = apiProxy.api1("arg1");
-    Integer i = apiProxy.api2("arg2");
+    String s = apiProxy.api1("arg1");   //5s
+    Integer i = apiProxy.api2("arg2");   //3s
     long endTime = System.currentTimeMillis();
     System.out.println("SYNC:Execution Complete for API 1 API 2 Time->" + (endTime - startTime) +
         "ms");
