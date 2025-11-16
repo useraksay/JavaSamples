@@ -12,7 +12,7 @@ public class ListUtils {
      */
     public static <T> List<T> findDuplicateItems(List<T> list) {
         if (list == null || list.isEmpty()) {
-            return new ArrayList<>();
+            throw new IllegalArgumentException("List must not be null or empty");
         }
         Set<T> seen = new HashSet<>();
         Set<T> duplicates = new HashSet<>();
@@ -26,5 +26,19 @@ public class ListUtils {
             return new ArrayList<>(duplicates);
         }
         return new ArrayList<>();
+    }
+
+    public static <T extends Comparable<T>> T findMax(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            throw new IllegalArgumentException("List must not be null or empty");
+        }
+
+        T max = list.get(0);
+        for (T element : list) {
+            if (element.compareTo(max) > 0) {
+                max = element;
+            }
+        }
+        return max;
     }
 }
