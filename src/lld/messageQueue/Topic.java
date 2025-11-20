@@ -15,10 +15,10 @@ public class Topic {
     }
 
     public List<Partition> setPartitions(List<Partition> partitions) {
-        return partitions;
+        return this.partitions = partitions;
     }
 
     public List<Partition> getPartitions() {
-        return partitions;
+        return this.partitions;
     }
 }

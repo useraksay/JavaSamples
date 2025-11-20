@@ -87,7 +87,7 @@ public class CompletableFutureDemo {
         "arg2"), executorService);
     handleFuture(api2Future);
 
-    //two api calls are made parallely
+    //two api calls are made in parallel
     //combine the results into a pojo\
     String s = api1Future.join();
     Integer i = api2Future.join();
@@ -123,7 +123,7 @@ public class CompletableFutureDemo {
         "arg2"), executorService);
     handleFuture(api2Future);
 
-    //two api calls are made parallely
+    //two api calls are made in parallel
     //combine the results into a pojo\
 
     String s = api1Future.get();

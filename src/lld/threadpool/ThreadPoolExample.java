@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ThreadPool {
-    private static ThreadPool instance;
+    private static ThreadPool INSTANCE;
     private final BlockingQueue<Runnable> taskQueue;
     private final Thread[] workers;
     private final AtomicBoolean isShutDownInitiated;
@@ -23,10 +23,10 @@ class ThreadPool {
     }
 
     public static synchronized ThreadPool getInstance(int numberOfThreads) {
-        if (instance == null) {
-            instance = new ThreadPool(numberOfThreads);
+        if (INSTANCE == null) {
+            INSTANCE = new ThreadPool(numberOfThreads);
         }
-        return instance;
+        return INSTANCE;
     }
 
     // Method to submit task
